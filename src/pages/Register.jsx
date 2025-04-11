@@ -37,7 +37,7 @@ export default function Register() {
       if (response.status === 201) {
         setSuccess('Registrazione riuscita! Verrai reindirizzato alla pagina di login.');
         setError('');
-        console.log("Registrazione riuscita, reindirizzando a /profile...");
+        console.log("Registrazione riuscita");
 
         setTimeout(() => {
           navigate('/profile');

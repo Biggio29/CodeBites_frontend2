@@ -14,14 +14,6 @@ export default function RecipeCard({ data, onDelete }) {
     if (isLoggedIn && user) {
       const authorMatch = user.username === data.author.username;
       setIsAuthor(authorMatch);
-      console.log(
-        "Controllo autore: utente loggato",
-        user.username,
-        "autore ricetta",
-        data.author.username,
-        "match:",
-        authorMatch
-      );
     }
   }, [isLoggedIn, user, data.author.username]);
 

@@ -16,7 +16,6 @@ export default function Profile() {
 
   useEffect(() => {
     setLoading(false);
-    console.log('Componente Profile montato, isLoggedIn:', isLoggedIn, 'user:', user);
   }, [isLoggedIn, user]);
 
   const handleLogin = async (e) => {
@@ -26,8 +25,6 @@ export default function Profile() {
     console.log('Tentativo di login con', username);
 
     try {
-        console.log('Invio richiesta al backend con username:', username, 'e password:', password);
-        
         const response = await axios.post(
             'https://codebites-backend2.onrender.com/api/users/login',
             { username, password },
@@ -41,7 +38,6 @@ export default function Profile() {
             console.log('Login riuscito, user:', user);
 
             login(user);
-            console.log('Login eseguito con successo, redirigendo a /');
 
             setLoading(false);
             navigate('/');
@@ -56,7 +52,6 @@ export default function Profile() {
             console.log('Errore ricevuto dal backend:', err.response.data.error);
         } else {
             setError('Errore nel login: ' + (err.message || 'Unknown error'));
-            console.log('Errore sconosciuto nel login:', err.message);
         }
         setLoading(false);
     }

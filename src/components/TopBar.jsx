@@ -11,13 +11,10 @@ export default function TopBar ({ onSearch }) {
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
 
-  console.log('Stato di login:', isLoggedIn);
-
   return (
     <nav className="topbar">
       <div className="topbar-left">
         <button onClick={() => {
-          console.log('Navigazione alla homepage');
           navigate("/");
         }} className="home-btn">
           <HomeIcon fontSize="small" />
@@ -25,7 +22,6 @@ export default function TopBar ({ onSearch }) {
 
         {isLoggedIn && (
           <button onClick={() => {
-            console.log('Navigazione alla pagina di aggiunta ricetta');
             navigate("/new-recipe");
           }} className="add-recipe-btn">
             <AddIcon fontSize="small" />
@@ -38,7 +34,6 @@ export default function TopBar ({ onSearch }) {
 
       <div className="search-bar-container">
         <SearchBar onSearch={(query) => {
-          console.log('Ricerca effettuata con query:', query);
           onSearch(query);
         }} />
       </div>
@@ -46,7 +41,6 @@ export default function TopBar ({ onSearch }) {
       <div className="topbar-right">
         {isLoggedIn && (
           <button onClick={() => {
-            console.log('Navigazione alle ricette dell\'utente');
             navigate("/my-recipes");
           }} className="my-recipes-btn">
             Le mie ricette
@@ -54,7 +48,6 @@ export default function TopBar ({ onSearch }) {
         )}
 
         <button onClick={() => {
-          console.log('Navigazione al profilo');
           navigate("/profile");
         }} className="profile-btn">
           <PersonIcon fontSize="small" />

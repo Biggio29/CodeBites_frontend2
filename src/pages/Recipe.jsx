@@ -24,7 +24,6 @@ export default function Recipe() {
     }, [id]);
 
     if (!recipe) {
-        console.log("Caricamento in corso...");
         return <div>Loading...</div>;
     }
 

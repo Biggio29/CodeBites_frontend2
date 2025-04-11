@@ -37,7 +37,6 @@ export default function MyRecipe({ searchQuery }) {
         console.error("Errore nella richiesta delle ricette:", err);
         setError('Errore nella richiesta delle ricette: ' + err.message);
       } finally {
-        console.log("Completata la richiesta di recupero ricette.");
         setLoading(false);
       }
     };    

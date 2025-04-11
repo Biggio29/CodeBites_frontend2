@@ -37,8 +37,6 @@ export default function Home({ searchQuery }) {
     (description && description.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
-  console.log("Ricette filtrate per la ricerca:", filteredRecipes);
-
   return (
     <div className="home">
       <div className="recipes-container">

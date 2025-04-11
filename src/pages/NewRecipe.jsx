@@ -16,14 +16,6 @@ export default function NewRecipe({ onAddRecipe }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    console.log("Tentativo di aggiungere una nuova ricetta con i seguenti dati:", {
-      title,
-      description,
-      ingredients,
-      instructions,
-      imgSrc,
-    });
-  
     if (!title || !description || !ingredients || !instructions || !imgSrc) {
       setErrorMessage("Tutti i campi sono obbligatori.");
       console.log("Errore: tutti i campi sono obbligatori");
@@ -53,7 +45,6 @@ export default function NewRecipe({ onAddRecipe }) {
         setImgSrc("");
         setErrorMessage("");
   
-        console.log("Redirigo alla homepage dopo aggiunta ricetta.");
         navigate("/");
       } else if (response.status === 401) {
         setErrorMessage("Devi essere loggato per aggiungere una ricetta.");
