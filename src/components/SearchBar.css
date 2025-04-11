@@ -1,0 +1,23 @@
+.search-bar {
+  width: 100%;
+  max-width: 300px;
+  margin: 8px 0;
+}
+  
+.search-bar .MuiOutlinedInput-root {
+  border-radius: 8px;
+  background-color: white;
+}
+  
+.search-bar .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #4caf50;
+}
+  
+.search-bar .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #388e3c;
+}
+  
+.search-bar input {
+  padding: 10px;
+}
+  

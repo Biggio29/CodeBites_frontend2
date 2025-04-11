@@ -1,0 +1,135 @@
+.profile {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+h2 {
+  color: #333;
+  text-align: center;
+  font-size: 24px;
+}
+
+h3 {
+  color: #555;
+  font-size: 20px;
+}
+
+h4 {
+  color: #333;
+  margin: 10px 0;
+}
+
+p {
+  color: #777;
+  font-size: 14px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+form h2 {
+  color: #2a2a2a;
+  text-align: center;
+  font-size: 22px;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+form label {
+  font-weight: bold;
+  color: #555;
+  font-size: 16px;
+}
+
+form input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+form input:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+form p {
+  text-align: center;
+  color: #888;
+}
+
+.register-link {
+  color: #4CAF50;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+.register-link:hover {
+  color: #45a049;
+}
+
+.logout-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  max-width: 150px;
+  display: block;
+  margin: 10px auto;
+  text-align: center;
+  font-size: 16px;
+}
+
+.logout-button:hover {
+  background-color: #45a049;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center;    
+  height: 100vh;           
+  position: fixed;        
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7); 
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.profile.loading {
+  display: none;
+}

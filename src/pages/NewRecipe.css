@@ -1,0 +1,58 @@
+
+.new-recipe-form h2 {
+  padding: 20px;
+  font-size: 28px;
+  color: #333;
+}
+
+.new-recipe-form input,
+.new-recipe-form textarea {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.new-recipe-form textarea {
+  min-height: 180px;
+  max-height: 250px;
+  resize: vertical;
+}
+
+.new-recipe-form input:focus,
+.new-recipe-form textarea:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+.new-recipe-form button {
+  width: 100%;
+  padding: 15px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 18px;
+  font-family: inherit;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.new-recipe-form button:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+.new-recipe-form button:active {
+  transform: translateY(1px);
+}
+
+.error-message {
+  color: red;
+  margin-top: 15px;
+  font-size: 16px;
+  text-align: center;
+}

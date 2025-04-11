@@ -1,0 +1,67 @@
+.register-container {
+  padding: 20px;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.register-container h2 {
+  color: #2a2a2a;
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  font-weight: bold;
+  color: #555;
+  font-size: 16px;
+}
+
+.input-group input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.input-group input:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+.error-message,
+.success-message {
+  font-size: 14px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.error-message {
+  color: red;
+}
+
+.success-message {
+  color: green;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
