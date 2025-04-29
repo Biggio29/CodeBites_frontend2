@@ -33,7 +33,7 @@ export default function Profile() {
 
         console.log('Risposta dal server:', response.data);
 
-        if (response.data.message === 'Login riuscito!' && response.data.user) {
+        if (response.status === 200 && response.data.user) {
             const user = response.data.user;
             console.log('Login riuscito, user:', user);
 
