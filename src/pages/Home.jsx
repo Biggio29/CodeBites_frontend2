@@ -44,7 +44,6 @@ export default function Home({ searchQuery }) {
               <RecipeCard
                 data={recipe}
                 onDelete={(id) => {
-                  console.log("Ricetta eliminata:", id);
                   setRecipes((prevRecipes) => prevRecipes.filter((recipe) => recipe._id !== id));
                 }}
               />

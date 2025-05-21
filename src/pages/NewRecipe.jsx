@@ -40,7 +40,7 @@ export default function NewRecipe({ onAddRecipe }) {
     
       navigate("/");
     } catch (error) {
-      const message = error.response?.data?.message || "Errore imprevisto. Riprova più tardi.";
+      const message = error.response?.data?.error || "Errore imprevisto. Riprova più tardi.";
       setErrorMessage(message);
       console.error("Errore nell'aggiunta della ricetta:", error);
     }

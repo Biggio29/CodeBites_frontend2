@@ -18,31 +18,20 @@ export default function Register() {
       return;
     }
 
-    try {
+     try {
       const response = await axios.post(
         'https://codebites-backend2.onrender.com/api/users/register',
-        {
-          username,
-          password,
-        }
+        { username, password }
       );
 
       if (response.status === 201) {
         setSuccess('Registrazione riuscita! Verrai reindirizzato alla pagina di login.');
         setError('');
-        setTimeout(() => {
-          navigate('/profile');
-        }, 3000);
-      } else {
-        setError(response.data.error || 'Errore durante la registrazione');
+        setTimeout(() => navigate('/profile'), 3000);
       }
     } catch (err) {
-      console.error('Errore nella connessione', err);
-      if (err.response && err.response.data && err.response.data.error) {
-        setError(err.response.data.error);
-      } else {
-        setError('Errore nella connessione al server');
-      }
+      setError(err.response?.data?.error || 'Errore nella connessione al server');
+      setSuccess('');
     }
   };
 

@@ -24,56 +24,54 @@ export default function Profile() {
     setLoading(true);
 
     try {
-        const response = await axios.post(
-            'https://codebites-backend2.onrender.com/api/users/login',
-            { username, password },
-            { withCredentials: true }
-        );
+    const response = await axios.post(
+      'https://codebites-backend2.onrender.com/api/users/login',
+      { username, password },
+      { withCredentials: true }
+    );
 
-        if (response.status === 200 && response.data.user) {
-            const user = response.data.user;
-
-            login(user);
-
-            setLoading(false);
-            navigate('/');
-        } else {
-            console.error('Login fallito, utente non trovato.');
-            throw new Error('Login fallito, utente non trovato.');
-        }
-    } catch (err) {
-        console.error('Errore nel login:', err);
-        if (err.response && err.response.data && err.response.data.error) {
-            setError(err.response.data.error);
-        } else {
-            setError('Errore nel login: ' + (err.message || 'Unknown error'));
-        }
-        setLoading(false);
+    if (response.status === 200 && response.data.user) {
+      const user = response.data.user;
+      login(user);
+      setLoading(false);
+      navigate('/');
+    } else {
+      throw new Error('Login fallito, utente non trovato.');
     }
+  } catch (err) {
+    console.error('Errore nel login:', err);
+    setError(err.response?.data?.error || 'Errore sconosciuto');
+    setLoading(false);
+  }
 };
 
 const handleLogout = async () => {
+  setError('');
+  setLoading(true);
   try {
     const response = await axios.post(
       'https://codebites-backend2.onrender.com/api/users/logout',
       {},
       { withCredentials: true }
     );
-    if (response.data.message === 'Logout avvenuto con successo') {
-      Cookies.remove('token');
-    
-      setLoading(true);
+      if (response.status === 200) {
+        Cookies.remove('token');
 
-      setTimeout(() => {
-        logout();
+        setTimeout(() => {
+          logout();
+          setLoading(false);
+          navigate('/');
+        }, 2000);
+      } else {
         setLoading(false);
-        navigate('/');
-      }, 2000);
+        setError('Errore nel logout: risposta inattesa dal server.');
+      }
+    } catch (err) {
+      console.error('Errore nel logout:', err);
+      setError(err.response?.data?.error || 'Errore sconosciuto durante il logout');
+      setLoading(false);
     }
-  } catch (err) {
-    console.error('Errore nel logout:', err);
-  }
-};
+  };
 
 
   return (

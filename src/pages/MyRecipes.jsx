@@ -32,7 +32,8 @@ export default function MyRecipe({ searchQuery }) {
         setRecipes(response.data);
       } catch (err) {
         console.error("Errore nella richiesta delle ricette:", err);
-        setError('Errore nella richiesta delle ricette: ' + err.message);
+        const errorMsg = err.response?.data?.error || "Errore imprevisto nel caricamento delle ricette.";
+        setError(errorMsg);
       } finally {
         setLoading(false);
       }
