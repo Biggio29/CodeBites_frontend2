@@ -9,11 +9,8 @@ export default function Recipe() {
 
     useEffect(() => {
         const fetchRecipe = async () => {
-            console.log("Recupero ricetta con ID:", id);
-
             try {
                 const response = await axios.get(`https://codebites-backend2.onrender.com/api/recipes/${id}`);
-                console.log("Ricetta recuperata con successo:", response.data);
                 setRecipe(response.data);
             } catch (error) {
                 console.error('Errore nel recupero della ricetta:', error);

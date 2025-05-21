@@ -18,49 +18,31 @@ export default function NewRecipe({ onAddRecipe }) {
   
     if (!title || !description || !ingredients || !instructions || !imgSrc) {
       setErrorMessage("Tutti i campi sono obbligatori.");
-      console.log("Errore: tutti i campi sono obbligatori");
       return;
     }
   
     const newRecipe = { title, description, ingredients, instructions, imgSrc };
   
     try {
-  
-      console.log("Invio richiesta POST per aggiungere la ricetta:", newRecipe);
       const response = await axios.post(
-        "https://codebites-backend2.onrender.com/api/recipes/addRecipe", 
-        newRecipe, 
-        {withCredentials: true,}
+        "https://codebites-backend2.onrender.com/api/recipes/addRecipe",
+        newRecipe,
+        { withCredentials: true }
       );
-  
-      if (response.status === 201) {
-        console.log("Ricetta aggiunta con successo:", response.data);
-  
-        if (onAddRecipe) onAddRecipe(response.data);
-  
-        setTitle("");
-        setDescription("");
-        setIngredients("");
-        setInstructions("");
-        setImgSrc("");
-        setErrorMessage("");
-  
-        navigate("/");
-      } else if (response.status === 401) {
-        setErrorMessage("Devi essere loggato per aggiungere una ricetta.");
-        console.log("Errore: utente non autenticato (401)");
-      } else {
-        setErrorMessage("Errore di rete. Prova di nuovo più tardi.");
-        console.log("Errore: stato", response.status);
-      }
+    
+      onAddRecipe?.(response.data);
+      setTitle("");
+      setDescription("");
+      setIngredients("");
+      setInstructions("");
+      setImgSrc("");
+      setErrorMessage("");
+    
+      navigate("/");
     } catch (error) {
-      if (error.response && error.response.status === 401) {
-        setErrorMessage("Devi essere loggato per aggiungere una ricetta.");
-        console.log("Errore catch: utente non autenticato (401)");
-      } else {
-        setErrorMessage("Errore di rete. Prova di nuovo più tardi.");
-        console.log("Errore catch: errore di rete o server", error);
-      }
+      const message = error.response?.data?.message || "Errore imprevisto. Riprova più tardi.";
+      setErrorMessage(message);
+      console.error("Errore nell'aggiunta della ricetta:", error);
     }
   };
 

@@ -14,14 +14,12 @@ export default function MyRecipe({ searchQuery }) {
 
   useEffect(() => {
     if (!user) {
-      console.log("Utente non loggato, errore.");
       setError('Utente non loggato.');
       setLoading(false);
       return;
     }
 
     const fetchRecipes = async () => {
-      console.log("Tentativo di recupero delle ricette per l'utente:", user.id);
       try {
         const config = {
           withCredentials: true,
@@ -31,7 +29,6 @@ export default function MyRecipe({ searchQuery }) {
           `https://codebites-backend2.onrender.com/api/recipes/byLoggedUser/${user.id}`, 
           config
         );
-        console.log("Ricette recuperate con successo:", response.data);
         setRecipes(response.data);
       } catch (err) {
         console.error("Errore nella richiesta delle ricette:", err);
@@ -45,7 +42,6 @@ export default function MyRecipe({ searchQuery }) {
   }, [user]);
 
   const handleDeleteRecipe = (recipeId) => {
-    console.log("Ricetta eliminata con ID:", recipeId);
     setRecipes((prevRecipes) => prevRecipes.filter((recipe) => recipe._id !== recipeId));
   };
 
@@ -53,9 +49,7 @@ export default function MyRecipe({ searchQuery }) {
     recipe.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
     recipe.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
-  console.log("Ricette filtrate per la ricerca:", filteredRecipes);
-
+  
   return (
     <div className="my-recipes">
       <h2>Le mie ricette</h2>

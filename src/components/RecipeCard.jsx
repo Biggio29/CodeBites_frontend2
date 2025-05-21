@@ -27,25 +27,18 @@ export default function RecipeCard({ data, onDelete }) {
 
   const handleDelete = async (event) => {
     event.preventDefault();
-    
-    console.log("Tentativo di eliminazione ricetta con id:", data._id);
     const isConfirmed = window.confirm("Sei sicuro di voler eliminare questa ricetta?");
     if (!isConfirmed) return;
     
     try {
-      console.log("Inviando richiesta DELETE per la ricetta", data._id);
       const response = await axios.delete(
         `https://codebites-backend2.onrender.com/api/recipes/${data._id}`,
         { withCredentials: true }
       );
-
-      console.log("Risposta del server per eliminazione:", response);
-
       if (response.status !== 200)
         throw new Error("Errore durante l'eliminazione");
 
       onDelete(data._id);
-      console.log("Ricetta eliminata con successo, id:", data._id);
     } catch (err) {
       console.error("Errore nell'eliminazione:", err);
     }

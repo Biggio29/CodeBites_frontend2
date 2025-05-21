@@ -22,7 +22,6 @@ export default function Profile() {
     e.preventDefault();
     setError('');
     setLoading(true);
-    console.log('Tentativo di login con', username);
 
     try {
         const response = await axios.post(
@@ -31,11 +30,8 @@ export default function Profile() {
             { withCredentials: true }
         );
 
-        console.log('Risposta dal server:', response.data);
-
         if (response.status === 200 && response.data.user) {
             const user = response.data.user;
-            console.log('Login riuscito, user:', user);
 
             login(user);
 
@@ -49,7 +45,6 @@ export default function Profile() {
         console.error('Errore nel login:', err);
         if (err.response && err.response.data && err.response.data.error) {
             setError(err.response.data.error);
-            console.log('Errore ricevuto dal backend:', err.response.data.error);
         } else {
             setError('Errore nel login: ' + (err.message || 'Unknown error'));
         }
@@ -59,15 +54,11 @@ export default function Profile() {
 
 const handleLogout = async () => {
   try {
-    console.log('Tentativo di logout...');
-    
     const response = await axios.post(
       'https://codebites-backend2.onrender.com/api/users/logout',
       {},
       { withCredentials: true }
     );
-
-    console.log('Risposta dal server:', response.data);
     if (response.data.message === 'Logout avvenuto con successo') {
       Cookies.remove('token');
     

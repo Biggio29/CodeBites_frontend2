@@ -9,21 +9,14 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const checkLoginStatus = async () => {
-    console.log("Controllo stato di login...");
-
     try {
       const response = await axios.get("https://codebites-backend2.onrender.com/api/users/checkLogin", {
         withCredentials: true,
       });
-
-      console.log("Risposta dal server:", response.data);
-
       if (response.data.user) {
-        console.log("Utente autenticato:", response.data.user);
         setIsLoggedIn(true);
         setUser(response.data.user);
       } else {
-        console.log("Utente non autenticato");
         setIsLoggedIn(false);
         setUser(null);
       }
@@ -41,13 +34,11 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = (user) => {
-    console.log("Login eseguito per:", user.username);
     setIsLoggedIn(true);
     setUser(user);
   };
 
   const logout = () => {
-    console.log("Logout eseguito.");
     setIsLoggedIn(false);
     setUser(null);
   };

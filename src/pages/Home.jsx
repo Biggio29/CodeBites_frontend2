@@ -13,10 +13,8 @@ export default function Home({ searchQuery }) {
   useEffect(() => {
 
     const fetchRecipes = async () => {
-      console.log("Tentativo di recupero ricette...");
       try {
         const response = await axios.get("https://codebites-backend2.onrender.com/api/recipes/all");
-        console.log("Ricette recuperate con successo:", response.data);
         setRecipes(response.data);
       } catch (error) {
         console.error("Errore nel recupero delle ricette:", error);
