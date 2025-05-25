@@ -31,13 +31,10 @@ export default function RecipeCard({ data, onDelete }) {
     if (!isConfirmed) return;
     
     try {
-      const response = await axios.delete(
+      await axios.delete(
         `https://codebites-backend2.onrender.com/api/recipes/${data._id}`,
         { withCredentials: true }
       );
-      if (response.status !== 200)
-        throw new Error("Errore durante l'eliminazione");
-
       onDelete(data._id);
     } catch (err) {
       console.error("Errore nell'eliminazione:", err);
